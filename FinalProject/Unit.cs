@@ -11,6 +11,7 @@ namespace FinalProject
     {
         public virtual Tile unitTile { get; set; }
         public virtual string Name { get; set; }
+        public virtual string Icon { get; set; }
         public virtual int Steps { get; set; }
         public virtual int ScoreUnit { get; set; }
         public virtual UnitState State { get; set; }

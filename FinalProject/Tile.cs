@@ -25,5 +25,5 @@ namespace FinalProject
 
 
     public enum TileColor { White, Black, Green, Blue }
-    public enum TileState { Occupied, Empty, Dest}
+    public enum TileState { Occupied, Empty}
 }

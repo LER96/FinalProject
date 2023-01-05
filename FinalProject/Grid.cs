@@ -12,13 +12,33 @@ namespace FinalProject
         public Grid(int width, int height)
         {
             tiles = new Tile[width, height];
-            for(int i=0; i<width; i++) 
+            for(int y=0; y<height; y++) 
             {
-                for(int j=0; j<height; j++)
+                for(int x=0; x<width; x++)
                 {
-                    tiles[i, j].State = TileState.Empty;
+                    tiles[y, x].State = TileState.Empty;
+                    tiles[y, x].Xlocation = x;
+                    tiles[y, x].Ylocation = y;
                 }
             }
         }
+
+        public int Distance(Tile startTile,Tile endTile)
+        {
+            int distanceX= endTile.Xlocation- startTile.Xlocation;
+            int distanceY= endTile.Ylocation- startTile.Ylocation;
+
+            if(distanceX<0)
+            {
+                distanceX*=-1;
+            }
+            if(distanceY<0)
+            {
+                distanceY*=-1;
+            }
+
+            return distanceX + distanceY;
+        }
+
     }
 }

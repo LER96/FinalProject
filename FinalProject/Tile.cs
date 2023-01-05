@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    internal class Tile
+    abstract class Tile
     {
         public Unit unit;
         public virtual TileColor Color { get; set; }
         public virtual TileState State { get; set; }
+
+        public virtual int Xlocation { get; set; }
+        public virtual int Ylocation { get; set; }
 
         public virtual void SetUnit(Unit unit)
         {
@@ -18,6 +21,9 @@ namespace FinalProject
         }
     }
 
+
+
+
     public enum TileColor { White, Black, Green, Blue }
-    public enum TileState { Occupied, Empty}
+    public enum TileState { Occupied, Empty, Dest}
 }

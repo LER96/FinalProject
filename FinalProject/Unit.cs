@@ -9,36 +9,50 @@ namespace FinalProject
 {
     abstract class Unit
     {
-        public virtual Tile unitTile { get; set; }
+        public Player player { get; set; }
+        public  Tile unitTile { get; set; }
         public virtual string Name { get; set; }
         public virtual string Icon { get; set; }
         public virtual int Steps { get; set; }
         public virtual int ScoreUnit { get; set; }
         public virtual UnitState State { get; set; }
+
         public virtual void SetTile(Tile tile)
         {
             if (tile.State == TileState.Empty)
             {
+                if (this.unitTile != null)
+                {
+                    this.unitTile.RemoveUnit();
+                }
                 this.unitTile = tile;
-                this.unitTile.State = TileState.Occupied;
                 this.unitTile.SetUnit(this);
+            }
+            else
+            {
+                if (this.unitTile.Equals(tile) == false)
+                {
+                    tile.RemoveUnit();
+                    this.unitTile = tile;
+                    this.unitTile.SetUnit(this);
+                }
             }
         }
     }
 
     public enum UnitState { Movable, Static}
 
-    class MoveUnit: Unit
+    class MoveUnit: Unit,IMove
     {
-        public MoveUnit(string name, int dist, int worth)
+        public MoveUnit(Player p,string name, string icon, int dist, int worth)
         {
+            this.player = p;
             this.Name= name;
+            this.Icon= icon;
             this.ScoreUnit = worth;
             this.Steps = dist;
             this.State = UnitState.Movable;
         }
-
-        //Layan
         public void Move()
         {
 
@@ -47,12 +61,19 @@ namespace FinalProject
 
     class StaticUnit : Unit
     {
-        public StaticUnit(string name, int worth)
+        public StaticUnit(Player p, string name, string icon, int worth)
         {
+            this.player = p;
             this.Name = name;
+            this.Icon = icon;
             this.ScoreUnit = worth;
             this.State = UnitState.Static;
         }
+    }
+
+    public interface IMove
+    {
+        public void Move();
     }
 
 

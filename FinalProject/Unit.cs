@@ -91,10 +91,8 @@ namespace FinalProject
             staticU.State= this.State;
             return staticU;
             
-
         }
     }
-
 
 
     public interface IMove

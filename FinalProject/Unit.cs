@@ -38,6 +38,11 @@ namespace FinalProject
                 }
             }
         }
+
+        public string ToString()
+        {
+            return $"Unit:{this.Name},Icon:{this.Icon}, Steps:{this.Steps}, Score:{this.ScoreUnit}, Unit Type: {this.State}";
+        }
     }
 
     public enum UnitState { Movable, Static}
@@ -80,7 +85,6 @@ namespace FinalProject
             this.ScoreUnit = worth;
             this.State = UnitState.Static;
         }
-
         public StaticUnit Clone()
         {
             var staticU= (StaticUnit)MemberwiseClone();
@@ -89,12 +93,9 @@ namespace FinalProject
             staticU.Icon= this.Icon;
             staticU.ScoreUnit= this.ScoreUnit;
             staticU.State= this.State;
-            return staticU;
-            
+            return staticU;     
         }
     }
-
-
     public interface IMove
     {
         public void Move();

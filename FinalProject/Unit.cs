@@ -42,7 +42,7 @@ namespace FinalProject
 
     public enum UnitState { Movable, Static}
 
-    class MoveUnit: Unit,IMove
+    class MoveUnit: Unit,IMove, ICloneable<MoveUnit>
     {
         public MoveUnit(Player p,string name, string icon, int dist, int worth)
         {
@@ -53,13 +53,24 @@ namespace FinalProject
             this.Steps = dist;
             this.State = UnitState.Movable;
         }
+        public MoveUnit Clone()
+        {
+            var moveU= (MoveUnit)MemberwiseClone();
+            moveU.player = this.player;
+            moveU.Name= this.Name;
+            moveU.Icon= this.Icon;
+            moveU.ScoreUnit= this.ScoreUnit;
+            moveU.Steps= this.Steps;
+            return moveU;
+        }
+
         public void Move()
         {
 
         }
     }
 
-    class StaticUnit : Unit
+    class StaticUnit : Unit, ICloneable<StaticUnit>
     {
         public StaticUnit(Player p, string name, string icon, int worth)
         {
@@ -69,11 +80,30 @@ namespace FinalProject
             this.ScoreUnit = worth;
             this.State = UnitState.Static;
         }
+
+        public StaticUnit Clone()
+        {
+            var staticU= (StaticUnit)MemberwiseClone();
+            staticU.player = this.player;
+            staticU.Name= this.Name;
+            staticU.Icon= this.Icon;
+            staticU.ScoreUnit= this.ScoreUnit;
+            staticU.State= this.State;
+            return staticU;
+            
+
+        }
     }
+
+
 
     public interface IMove
     {
         public void Move();
+    }
+    public interface ICloneable<T>
+    {
+        T Clone();
     }
 
 

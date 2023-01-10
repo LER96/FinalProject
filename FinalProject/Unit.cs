@@ -19,8 +19,10 @@ namespace FinalProject
 
         public virtual void SetTile(Tile tile)
         {
+            //if the tile we set destenation to ,is empty
             if (tile.State == TileState.Empty)
             {
+                //if the unit(pawn) is on the board
                 if (this.unitTile != null)
                 {
                     this.unitTile.RemoveUnit();
@@ -30,6 +32,7 @@ namespace FinalProject
             }
             else
             {
+
                 if (this.unitTile.Equals(tile) == false)
                 {
                     tile.RemoveUnit();
@@ -85,6 +88,8 @@ namespace FinalProject
             this.ScoreUnit = worth;
             this.State = UnitState.Static;
         }
+
+        // hard coded clone, a method that return the exact unit with his current settings
         public StaticUnit Clone()
         {
             var staticU= (StaticUnit)MemberwiseClone();
@@ -100,6 +105,8 @@ namespace FinalProject
     {
         public void Move();
     }
+
+    //For all types of clone 
     public interface ICloneable<T>
     {
         T Clone();

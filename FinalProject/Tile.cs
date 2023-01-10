@@ -11,8 +11,8 @@ namespace FinalProject
         public Unit unit;
         public virtual TileColor Color { get; set; }
         public virtual TileState State { get; set; }
-        protected virtual int Xlocation { get; set; }
-        protected virtual int Ylocation { get; set; }
+        public virtual int Xlocation { get; set; }
+        public virtual int Ylocation { get; set; }
 
         public Action <Tile> actionState= (Tile t)=>Console.WriteLine($"Tile: {t.Xlocation},{t.Ylocation} is {t.State}");
 
@@ -34,6 +34,8 @@ namespace FinalProject
         {
             return $"Tile states: {this.Color}, {this.State},{this.Xlocation},{this.Ylocation}";
         }
+
+        // if tile is the same location OR belongs to the same player
         public bool Equals(Tile t)
         {
             return (this.Xlocation==t.Xlocation && this.Ylocation== t.Ylocation) || this.unit.player.Equals(t.unit.player);

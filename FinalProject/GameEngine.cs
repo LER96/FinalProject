@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    abstract class Player
+    internal class GameEngine
     {
-        
+        Grid grid;
+        List<Player> playerList;
 
     }
 }

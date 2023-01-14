@@ -8,37 +8,15 @@ namespace FinalProject
 {
     internal class Grid
     {
-        Tile[,] tiles;
-        public Grid(int width, int height)
+        public IPosition[] grid;
+        public IPosition this[int X, int Y]
         {
-            tiles = new Tile[width, height];
-            for(int y=0; y<height; y++) 
-            {
-                for(int x=0; x<width; x++)
-                {
-                    tiles[y, x].State = TileState.Empty;
-                    tiles[y, x].Xlocation = x;
-                    tiles[y, x].Ylocation = y;
-                }
-            }
+            get { return this[Y, X]; }
+            set { this[X, Y] = value; }
         }
-
-        public int Distance(Tile startTile,Tile endTile)
+        public Grid()
         {
-            int distanceX= endTile.Xlocation- startTile.Xlocation;
-            int distanceY= endTile.Ylocation- startTile.Ylocation;
-
-            if(distanceX<0)
-            {
-                distanceX*=-1;
-            }
-            if(distanceY<0)
-            {
-                distanceY*=-1;
-            }
-
-            return distanceX + distanceY;
+            this.grid = new IPosition[30];
         }
-
     }
 }

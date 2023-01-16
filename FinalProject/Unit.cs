@@ -14,7 +14,8 @@ namespace FinalProject
         public virtual string Name { get; set; }
         public virtual string Icon { get; set; }
         public virtual int Steps { get; set; }
-        public virtual int ScoreUnit { get; set; }
+        public virtual Xdirect Xdirect { get; set; }
+        public virtual Ydirect Ydirect { get; set; }
         public virtual UnitState State { get; set; }
 
         public virtual void SetTile(Tile tile)
@@ -22,11 +23,7 @@ namespace FinalProject
             //if the tile we set destenation to ,is empty
             if (tile.State == TileState.Empty)
             {
-                //if the unit(pawn) is on the board
-                if (this.unitTile != null)
-                {
-                    this.unitTile.RemoveUnit();
-                }
+                this.unitTile.RemoveUnit();
                 this.unitTile = tile;
                 this.unitTile.SetUnit(this);
             }
@@ -44,7 +41,7 @@ namespace FinalProject
 
         public string ToString()
         {
-            return $"Unit:{this.Name},Icon:{this.Icon}, Steps:{this.Steps}, Score:{this.ScoreUnit}, Unit Type: {this.State}";
+            return $"Unit:{this.Name},Icon:{this.Icon}, Steps:{this.Steps}, Unit Type: {this.State}";
         }
     }
 
@@ -52,13 +49,15 @@ namespace FinalProject
 
     class MoveUnit: Unit,IMove, ICloneable<MoveUnit>
     {
-        public MoveUnit(Player p,string name, string icon, int dist, int worth)
+        public MoveUnit(Player p, Tile tile,string name, string icon, Xdirect xMove, Ydirect yMove)
         {
             this.player = p;
+            this.unitTile = tile;
             this.Name= name;
             this.Icon= icon;
-            this.ScoreUnit = worth;
-            this.Steps = dist;
+            //this.Steps = dist;
+            this.Xdirect = xMove;
+            this.Ydirect = yMove;
             this.State = UnitState.Movable;
         }
         public MoveUnit Clone()
@@ -67,25 +66,25 @@ namespace FinalProject
             moveU.player = this.player;
             moveU.Name= this.Name;
             moveU.Icon= this.Icon;
-            moveU.ScoreUnit= this.ScoreUnit;
             moveU.Steps= this.Steps;
             return moveU;
         }
 
-        public void Move()
-        {
 
+        public void Move(int x, int y)
+        {
+            
         }
     }
 
     class StaticUnit : Unit, ICloneable<StaticUnit>
     {
-        public StaticUnit(Player p, string name, string icon, int worth)
+        public StaticUnit(Player p, Tile tile, string name, string icon)
         {
             this.player = p;
+            this.unitTile = tile;
             this.Name = name;
             this.Icon = icon;
-            this.ScoreUnit = worth;
             this.State = UnitState.Static;
         }
 
@@ -96,16 +95,17 @@ namespace FinalProject
             staticU.player = this.player;
             staticU.Name= this.Name;
             staticU.Icon= this.Icon;
-            staticU.ScoreUnit= this.ScoreUnit;
             staticU.State= this.State;
             return staticU;     
         }
     }
     public interface IMove
     {
-        public void Move();
+        public void Move(int x, int y);
     }
 
+    public enum Xdirect { Right, Left, Both, None}
+    public enum Ydirect { Up, Down, Both, None}
     //For all types of clone 
     public interface ICloneable<T>
     {

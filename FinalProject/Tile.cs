@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    abstract class Tile
+    class Tile
     {
         public Unit unit;
         public virtual TileColor Color { get; set; }
         public virtual TileState State { get; set; }
 
-        public Tile(TileColor color, TileState state)
+        public Tile()
         {
-            Color = color;
-            State = state;
+
         }
 
         public Action<Tile> actionState = (Tile t) => Console.WriteLine($"Tile: is {t.State}");

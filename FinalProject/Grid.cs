@@ -12,12 +12,12 @@ namespace FinalProject
         Tile[,] tiles;
         public Grid(int width, int height)
         {
-            tiles = new Tile[width, height];
+            tiles = new Tile[height, width];
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
                 {
-                    tiles[y, x].State = TileState.Empty;
+                    tiles[y, x]=new Tile();
                 }
             }
         }

@@ -8,7 +8,9 @@ namespace FinalProject
 {
     abstract class Player
     {
-        
+        public virtual Unit[] Units { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Score { get; set; }
 
     }
 }

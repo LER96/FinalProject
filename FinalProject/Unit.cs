@@ -7,61 +7,42 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    abstract class Unit
+    abstract class Unit : IMove, ICloneable<Unit>
     {
         public Player player { get; set; }
-        public  Tile unitTile { get; set; }
-        public Grid TileMap { get; set; }
+        public Tile UnitTile { get; set; }
         public virtual string Name { get; set; }
         public virtual string Icon { get; set; }
         public virtual int ScoreUnit { get; set; }
-        public virtual UnitState State { get; set; }
+        public Action<Unit> Action = (Unit t) => { Console.WriteLine($"{t.player}:{t.Name} is at {t.UnitTile}"); };
 
-        
-    }
-
-    public enum UnitState { Movable, Static}
-
-    class MoveUnit: Unit,IMove, ICloneable<MoveUnit>
-    {
-        
-        public MoveUnit Clone()
-        {
-            var moveU= (MoveUnit)MemberwiseClone();
-            moveU.player = this.player;
-            moveU.Name= this.Name;
-            moveU.Icon= this.Icon;
-            moveU.ScoreUnit= this.ScoreUnit;
-            return moveU;
-        }
-        public void Move()
+        public virtual void Move(int x, int y)
         {
 
         }
-    }
-
-    class StaticUnit : Unit, ICloneable<StaticUnit>
-    {
-        
-        public StaticUnit Clone()
+        public virtual Unit Clone()
         {
-            var staticU= (StaticUnit)MemberwiseClone();
-            staticU.player = this.player;
-            staticU.Name= this.Name;
-            staticU.Icon= this.Icon;
-            staticU.ScoreUnit= this.ScoreUnit;
-            staticU.State= this.State;
-            return staticU;     
+            var u = (Unit)MemberwiseClone();
+            u.Name = this.Name;
+            u.Icon = this.Icon;
+            u.ScoreUnit = this.ScoreUnit;
+
+            u.player = this.player;
+            u.UnitTile = this.UnitTile;
+
+            return u;
         }
     }
+
     public interface IMove
     {
-        public void Move();
+        public void Move(int x, int y);
     }
     public interface ICloneable<T>
     {
         T Clone();
     }
+
 
 
 }

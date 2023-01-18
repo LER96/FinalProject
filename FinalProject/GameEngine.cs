@@ -6,10 +6,23 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    internal class GameEngine
+    abstract class GameEngine
     {
-        Grid grid;
-        List<Player> playerList;
+        public virtual Player[] players { get; set; }
+        public virtual Grid grid { get; set; }
+        public virtual void PreGame()
+        {
+
+        }
+        public virtual void Battle()
+        {
+
+        }
+
+    }
+
+    class Game : GameEngine
+    {
 
     }
 }

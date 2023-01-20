@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    abstract class Player
+    interface IPlayer
     {
-        public virtual Unit[] Units { get; set; }
-        public virtual string Name { get; set; }
-        public virtual string Score { get; set; }
-
+        int ID { get; set; }
+        string Name { get; set; }
     }
 }

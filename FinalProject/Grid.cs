@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,85 +7,106 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    abstract class Grid : IPosition<Tile>//: IEnumerable<Tile>
+    abstract class Grid : IEnumerable<Tile>
     {
-        public virtual Tile[,] TileMap { get; set; }
+        private Tile[,] _map;
 
-        public Tile this[int x, int y]
+        public Tile this[int index]
         {
-            get { return TileMap[y, x]; }
-            set { TileMap[y, x] = value; }
+            get { return _map[index / Width, index % Width]; }
+            set { _map[index / Width, index % Width] = value; }
         }
 
-        //int height, width;
+        public int Width { get; set; }
+        public int Height { get; set; }
 
-        //public IEnumerator<Tile> GetEnumerator()
+        public Grid(int width, int height)
+        {
+            Width = width;
+            Height = height;
+            _map = new Tile[height, width];
+        }
+
+        public IEnumerator<Tile> GetEnumerator()
+        {
+            return new SpiralEnumerator(_map, Width, Height);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+
+    class SpiralEnumerator : IEnumerator<Tile>
+    {
+        private Tile[,] _map;
+        private int _width;
+        private int _height;
+        private int _x;
+        private int _y;
+        private int _direction;
+        private int _steps;
+        private bool _isFirst;
+
+        public SpiralEnumerator(Tile[,] map, int width, int height)
+        {
+            _map = map;
+            _width = width;
+            _height = height;
+            _x = 0;
+            _y = -1;
+            _direction = 0;
+            _steps = 1;
+            _isFirst = true;
+        }
+
+        public Tile Current
+        {
+            get { return _map[_y, _x]; }
+        }
+
+        //object IEnumerator.Current
         //{
-        //    throw new NotImplementedException();
+        //    get
+        //    {
+        //        return Current;
+        //    }
         //}
 
-        //IEnumerator IEnumerable.GetEnumerator()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public bool MoveNext()
+        {
+            if (_isFirst)
+            {
+                _isFirst = false;
+                return true;
+            }
+
+            switch (_direction)
+            {
+                case 0: _x++; break;
+                case 1: _y++; break;
+                case 2: _x--; break;
+                case 3: _y--; break;
+            }
+
+            _steps--;
+            if (_steps == 0)
+            {
+                _direction = (_direction + 1) % 4;
+                if (_direction == 0 || _direction == 2) _steps++;
+            }
+
+            return (_x >= 0 && _x < _width);
+        }
+        public IEnumerable<Tile> GetIEnumerable()
+        {
+            throw new NotImplementedException();
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _map.GetEnumerator();
+        }
 
     }
 }
-
-//    class SetTile : IEnumerator<Tile>
-//    {
-//        Tile[,] tiles;
-//        int x=-1, y=-1;
-//        int count = 1;
-//        int direct = 0;
-//        bool flag;
-//        public SetTile(Tile[,] gridTile, int height, int width)
-//        {
-//            tiles= gridTile;
-//            x = width;
-//            y = height;
-//        }
-
-//        public Tile Current
-//        {
-
-//            get
-//            {
-//                switch (direct)
-//                {
-//                    //Up
-//                    case 0:
-//                        return tiles[y, x];
-//                    //Right
-//                    case 1:
-//                        return tiles[y, x];
-//                    //Down
-//                    case 2:
-//                        return tiles[y, x];
-//                    //Left
-//                    case 3:
-//                        return tiles[y, x];
-
-//                }
-//            }
-
-//        }
-
-//        object IEnumerator.Current => throw new NotImplementedException();
-
-//        public bool MoveNext()
-//        {
-//            x++;
-//            y++;
-//            return x < tiles.GetLength(1) && y<tiles.GetLength(0);
-//        }
-//        public void Dispose()
-//        {
-
-//        }
-//        public void Reset()
-//        {
-
-//        }
-//    }
-//}

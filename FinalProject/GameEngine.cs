@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    abstract class GameEngine
+    class GameEngine
     {
 
 

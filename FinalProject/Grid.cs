@@ -11,10 +11,10 @@ namespace FinalProject
     {
         private Tile[,] _map;
 
-        public Tile this[int index]
+        public Tile this[IPosition position]
         {
-            get { return _map[index / Width, index % Width]; }
-            set { _map[index / Width, index % Width] = value; }
+            get { return _map[position.Y, position.X]; }
+            set { _map[position.Y, position.X] = value; }
         }
 
         public int Width { get; set; }
@@ -66,14 +66,9 @@ namespace FinalProject
             get { return _map[_y, _x]; }
         }
 
-        //object IEnumerator.Current
-        //{
-        //    get
-        //    {
-        //        return Current;
-        //    }
-        //}
-
+        object IEnumerator.Current => Current;
+        public void Dispose() { }
+        
         public bool MoveNext()
         {
             if (_isFirst)
@@ -99,14 +94,12 @@ namespace FinalProject
 
             return (_x >= 0 && _x < _width);
         }
-        public IEnumerable<Tile> GetIEnumerable()
-        {
-            throw new NotImplementedException();
-        }
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _map.GetEnumerator();
-        }
+
+        public void Reset() { }
+        //public IEnumerable<Tile> GetIEnumerable()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
     }
 }

@@ -18,5 +18,9 @@ namespace FinalProject
             this.ID = iD;
             this.Name = name;
         }
+        public IPlayer()
+        {
+
+        }
     }
 }

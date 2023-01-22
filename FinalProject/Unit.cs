@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    abstract class Unit : IMove, ICloneable<Unit>
+    public abstract class Unit : IMove, ICloneable<Unit>
     {
         public int X { get; set; }
         public int Y { get; set; }
@@ -16,7 +16,28 @@ namespace FinalProject
         public string Name { get; set; }
         public char Icon { get; set; }
         public Tile Tile { get; set; }
-        public abstract void Move(int x, int y);
+
+        //public Unit(int x, int y, IPlayer owner, string name, char icon, Tile tile)
+        //{
+        //    this.X = x;
+        //    this.Y = y;
+        //    this.Owner = owner;
+        //    this.Name = name;
+        //    this.Icon = icon;
+        //    this.Tile = tile;
+        //}
+
+        public Unit()
+        {
+            this.X = 1;
+            this.Y = 1;
+            this.Owner = null;
+            this.Name = "fuck";
+            this.Icon = 'f';
+            this.Tile = null;
+        }
+
+        public delegate void Move(int x, int y);
         public abstract void OnTileEnter(Tile tile);
         public abstract void OnTileExit(Tile tile);
 
@@ -34,8 +55,9 @@ namespace FinalProject
 
     public interface IMove
     {
-        public void Move(int x, int y);
+        public delegate void Move(int x, int y);
     }
+    public enum MoveDirect { Positive, Negative, Both };
     public interface ICloneable<T>
     {
         T Clone();

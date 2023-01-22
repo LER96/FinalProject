@@ -9,7 +9,7 @@ namespace FinalProject
 {
     abstract class Grid : IEnumerable<Tile>
     {
-        private Tile[,] _map;
+        public Tile[,] _map { get; set; }  
         public Tile this[IPosition position]
         {
             get { return _map[position.Y, position.X]; }

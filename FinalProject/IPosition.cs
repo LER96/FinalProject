@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    interface IPosition
+    public interface IPosition
     {
         int X { get; }
         int Y { get; }
@@ -34,10 +34,10 @@ namespace FinalProject
             return HashCode.Combine(X, Y);
         }
 
-        public override bool Equals(object obj)
-        {
-            return obj is Position position && Equals(position);
-        }
+        //public override bool Equals(object obj)
+        //{
+        //    return obj is Position position && Equals(position);
+        //}
 
         public bool Equals(Position other)
         {

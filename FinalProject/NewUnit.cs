@@ -12,6 +12,17 @@ namespace FinalProject
         {
 
         }
+
+        public override void OnTileEnter(Tile tile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void OnTileExit(Tile tile)
+        {
+            throw new NotImplementedException();
+        }
+
         public delegate void Move(int x, int y);
     }
 }

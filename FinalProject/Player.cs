@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    interface IPlayer
+    abstract class IPlayer
     {
         int ID { get; set; }
         string Name { get; set; }
+
+        List<Unit> units { get; set; }
+
+        public IPlayer(int iD, string name)
+        {
+            this.ID = iD;
+            this.Name = name;
+        }
     }
 }

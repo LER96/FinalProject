@@ -12,6 +12,8 @@ namespace FinalProject
         public int X { get; set; }
         public int Y { get; set; }
         public IPlayer Owner { get; set; }
+        public Unit Unit { get; set; }
+
         public abstract void OnTileObjectEnter(Unit tileObject);
         public abstract void OnTileObjectExit(Unit tileObject);
     }

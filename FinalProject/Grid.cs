@@ -96,10 +96,5 @@ namespace FinalProject
         }
 
         public void Reset() { }
-        //public IEnumerable<Tile> GetIEnumerable()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
     }
 }

@@ -15,6 +15,7 @@ namespace FinalProject
         public IPlayer Owner { get; set; }
         public string Name { get; set; }
         public char Icon { get; set; }
+        public Tile Tile { get; set; }
         public abstract void Move(int x, int y);
         public abstract void OnTileEnter(Tile tile);
         public abstract void OnTileExit(Tile tile);

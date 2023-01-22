@@ -72,6 +72,7 @@ namespace FinalProject
         public virtual void GameSession()
         {
 
+<<<<<<< Updated upstream
         }
 
         public virtual bool Continue()
@@ -91,5 +92,22 @@ namespace FinalProject
             return int.Parse(Console.ReadLine());
         }
 
+=======
+        //public dynamic GetValue<T>()
+        //{
+        //    if(typeof(T)== typeof(int))
+        //    {
+        //        return int.Parse(Console.ReadLine());
+        //    }
+        //    else if(typeof(T) == typeof(string))
+        //    {
+        //        return Console.ReadLine();
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
+>>>>>>> Stashed changes
     }
 }

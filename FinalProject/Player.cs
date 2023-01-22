@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    abstract class IPlayer
+    public abstract class IPlayer
     {
         int ID { get; set; }
         string Name { get; set; }

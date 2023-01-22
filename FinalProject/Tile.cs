@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    abstract class Tile
+    public abstract class Tile
     {
         public int X { get; set; }
         public int Y { get; set; }

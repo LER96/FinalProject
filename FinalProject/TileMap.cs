@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FinalProject
+﻿namespace FinalProject
 {
-    internal class TileMap
+    public class TileMap : Grid
     {
+        public TileMap(int width, int height)
+        {
+            base.Width = width;
+            base.Height = height;
+            base._map = new Tile[height, width];
+        }
     }
 }

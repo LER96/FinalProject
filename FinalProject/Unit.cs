@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    abstract class Unit
+    public abstract class Unit
     {
-        public Player player { get; set; }
+        public IPlayer player { get; set; }
         public  Tile unitTile { get; set; }
         public virtual string Name { get; set; }
         public virtual string Icon { get; set; }

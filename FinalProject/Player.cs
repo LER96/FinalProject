@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    abstract class Player
+    public abstract class IPlayer
     {
-        public virtual string Name { get; set; }
-        public virtual Unit[] units { get; set; }
-        public virtual int Score { get; set; }
+        int ID { get; set; }
+        string Name { get; set; }
 
+        List<Unit> units { get; set; }
 
-        public string ToString()
+        public IPlayer(int iD, string name)
         {
-            return $"Player:{this.Name}, Units{this.units.Length}, Score:{this.Score}";
+            this.ID = iD;
+            this.Name = name;
         }
-        public bool Equals(Player p)
+        public IPlayer()
         {
-           return this.Name == p.Name && this.units.SequenceEqual(p.units);
-        }
 
+        }
     }
 }

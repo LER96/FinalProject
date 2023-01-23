@@ -7,24 +7,23 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    abstract class Grid : IEnumerable<Tile>
+    public abstract class Grid : IEnumerable<Tile>
     {
-        private Tile[,] _map;
+        public virtual Tile[,] _map { get; set; }
+        public virtual int Width { get; set; }
+        public virtual int Height { get; set; }
+
         public Tile this[IPosition position]
         {
             get { return _map[position.Y, position.X]; }
             set { _map[position.Y, position.X] = value; }
         }
-
-        public int Width { get; set; }
-        public int Height { get; set; }
-
-        public Grid(int width, int height)
-        {
-            Width = width;
-            Height = height;
-            _map = new Tile[height, width];
-        }
+        //public Grid(int width, int height)
+        //{
+        //    this.Width = width;
+        //    this.Height = height;
+        //    this._map = new Tile[height, width];
+        //}
 
         public IEnumerator<Tile> GetEnumerator()
         {

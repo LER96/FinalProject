@@ -1,116 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    public abstract class Unit
+    public abstract class Unit : IMove, ICloneable<Unit>
     {
-        public IPlayer player { get; set; }
-        public  Tile unitTile { get; set; }
-        public virtual string Name { get; set; }
-        public virtual string Icon { get; set; }
-        public virtual int Steps { get; set; }
-        public virtual Xdirect Xdirect { get; set; }
-        public virtual Ydirect Ydirect { get; set; }
-        public virtual UnitState State { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public IPlayer Owner { get; set; }
+        public string Name { get; set; }
+        public char Icon { get; set; }
+        public Tile Tile { get; set; }
 
-        public virtual void SetTile(Tile tile)
+        //public Unit(int x, int y, IPlayer owner, string name, char icon, Tile tile)
+        //{
+        //    this.X = x;
+        //    this.Y = y;
+        //    this.Owner = owner;
+        //    this.Name = name;
+        //    this.Icon = icon;
+        //    this.Tile = tile;
+        //}
+
+        public Unit()
         {
-            //if the tile we set destenation to ,is empty
-            if (tile.State == TileState.Empty)
-            {
-                this.unitTile.RemoveUnit();
-                this.unitTile = tile;
-                this.unitTile.SetUnit(this);
-            }
-            else
-            {
-
-                if (this.unitTile.Equals(tile) == false)
-                {
-                    tile.RemoveUnit();
-                    this.unitTile = tile;
-                    this.unitTile.SetUnit(this);
-                }
-            }
+            this.X = 1;
+            this.Y = 1;
+            this.Owner = null;
+            this.Name = "fuck";
+            this.Icon = 'f';
+            this.Tile = null;
         }
 
-        public string ToString()
+        public delegate void Move(int x, int y);
+        public abstract void OnTileEnter(Tile tile);
+        public abstract void OnTileExit(Tile tile);
+
+        public virtual Unit Clone()
         {
-            return $"Unit:{this.Name},Icon:{this.Icon}, Steps:{this.Steps}, Unit Type: {this.State}";
+            var u = (Unit)MemberwiseClone();
+            u.Owner = this.Owner;
+            u.Name = this.Name;
+            u.Icon = this.Icon;
+
+            u.Owner = this.Owner;
+            return u;
         }
     }
 
-    public enum UnitState { Movable, Static}
-
-    class MoveUnit: Unit,IMove, ICloneable<MoveUnit>
-    {
-        public MoveUnit(Player p, Tile tile,string name, string icon, Xdirect xMove, Ydirect yMove)
-        {
-            this.player = p;
-            this.unitTile = tile;
-            this.Name= name;
-            this.Icon= icon;
-            //this.Steps = dist;
-            this.Xdirect = xMove;
-            this.Ydirect = yMove;
-            this.State = UnitState.Movable;
-        }
-        public MoveUnit Clone()
-        {
-            var moveU= (MoveUnit)MemberwiseClone();
-            moveU.player = this.player;
-            moveU.Name= this.Name;
-            moveU.Icon= this.Icon;
-            moveU.Steps= this.Steps;
-            return moveU;
-        }
-
-
-        public void Move(int x, int y)
-        {
-            
-        }
-    }
-
-    class StaticUnit : Unit, ICloneable<StaticUnit>
-    {
-        public StaticUnit(Player p, Tile tile, string name, string icon)
-        {
-            this.player = p;
-            this.unitTile = tile;
-            this.Name = name;
-            this.Icon = icon;
-            this.State = UnitState.Static;
-        }
-
-        // hard coded clone, a method that return the exact unit with his current settings
-        public StaticUnit Clone()
-        {
-            var staticU= (StaticUnit)MemberwiseClone();
-            staticU.player = this.player;
-            staticU.Name= this.Name;
-            staticU.Icon= this.Icon;
-            staticU.State= this.State;
-            return staticU;     
-        }
-    }
     public interface IMove
     {
-        public void Move(int x, int y);
+        public delegate void Move(int x, int y);
     }
-
-    public enum Xdirect { Right, Left, Both, None}
-    public enum Ydirect { Up, Down, Both, None}
-    //For all types of clone 
+    public enum MoveDirect { Positive, Negative, Both };
     public interface ICloneable<T>
     {
         T Clone();
     }
+
 
 
 }

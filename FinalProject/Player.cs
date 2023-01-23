@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    public abstract class IPlayer
+    public class Player
     {
         int ID { get; set; }
         string Name { get; set; }
 
         List<Unit> units { get; set; }
 
-        public IPlayer(int iD, string name)
+        public Player(int iD, string name)
         {
             this.ID = iD;
             this.Name = name;
         }
-        public IPlayer()
+        public Player()
         {
 
         }

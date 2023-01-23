@@ -6,7 +6,7 @@
         {
             base.Width = width;
             base.Height = height;
-            base._map = new Tile[height, width];
+            base.map = new Tile[height, width];
         }
     }
 }

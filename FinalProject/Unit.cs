@@ -12,12 +12,12 @@ namespace FinalProject
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public IPlayer Owner { get; set; }
+        public Player Owner { get; set; }
         public string Name { get; set; }
         public char Icon { get; set; }
         public Tile Tile { get; set; }
 
-        //public Unit(int x, int y, IPlayer owner, string name, char icon, Tile tile)
+        //public Unit(int x, int y, Player owner, string name, char icon, Tile tile)
         //{
         //    this.X = x;
         //    this.Y = y;

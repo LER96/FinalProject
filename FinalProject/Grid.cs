@@ -9,25 +9,25 @@ namespace FinalProject
 {
     public abstract class Grid : IEnumerable<Tile>
     {
-        public virtual Tile[,] _map { get; set; }
+        public virtual Tile[,] map { get; set; }
         public virtual int Width { get; set; }
         public virtual int Height { get; set; }
 
         public Tile this[IPosition position]
         {
-            get { return _map[position.Y, position.X]; }
-            set { _map[position.Y, position.X] = value; }
+            get { return map[position.Y, position.X]; }
+            set { map[position.Y, position.X] = value; }
         }
         //public Grid(int width, int height)
         //{
         //    this.Width = width;
         //    this.Height = height;
-        //    this._map = new Tile[height, width];
+        //    this.map = new Tile[height, width];
         //}
 
         public IEnumerator<Tile> GetEnumerator()
         {
-            return new SpiralEnumerator(_map, Width, Height);
+            return new SpiralEnumerator(map, Width, Height);
         }
 
         IEnumerator IEnumerable.GetEnumerator()

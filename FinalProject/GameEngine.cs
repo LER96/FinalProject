@@ -60,7 +60,7 @@ namespace FinalProject
             Console.Clear();
 
             //Create the tilemap and draw it on the screen.
-            var tilemap = new Grid(width, height);
+            var tilemap = new TileMap(width, height);
             //tilemap.Draw();
 
             var input = RefreshGameEngineUI(tilemap);

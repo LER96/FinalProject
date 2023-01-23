@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    internal class BaseEngine
+    abstract class BaseEngine: IRenderer
     {
+        public virtual Player[] Players { get; set; }
+        public virtual Grid Grid { get; set; }
+
 
     }
 }

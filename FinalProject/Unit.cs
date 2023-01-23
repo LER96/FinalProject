@@ -17,26 +17,6 @@ namespace FinalProject
         public char Icon { get; set; }
         public Tile Tile { get; set; }
 
-        //public Unit(int x, int y, Player owner, string name, char icon, Tile tile)
-        //{
-        //    this.X = x;
-        //    this.Y = y;
-        //    this.Owner = owner;
-        //    this.Name = name;
-        //    this.Icon = icon;
-        //    this.Tile = tile;
-        //}
-
-        public Unit()
-        {
-            this.X = 1;
-            this.Y = 1;
-            this.Owner = null;
-            this.Name = "fuck";
-            this.Icon = 'f';
-            this.Tile = null;
-        }
-
         public delegate void Move(int x, int y);
         public abstract void OnTileEnter(Tile tile);
         public abstract void OnTileExit(Tile tile);

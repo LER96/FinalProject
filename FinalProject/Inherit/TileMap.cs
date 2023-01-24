@@ -1,4 +1,6 @@
-﻿namespace FinalProject
+﻿using FinalProject.Abstract;
+
+namespace FinalProject.Inherit
 {
     public class TileMap : Grid
     {

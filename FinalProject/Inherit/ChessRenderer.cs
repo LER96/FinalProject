@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FinalProject.Abstract;
 
-namespace FinalProject
+namespace FinalProject.Inherit
 {
-    
+
     public class ChessGrid : Grid
     {
         public override Tile[,] map { get; set; }
@@ -16,9 +17,7 @@ namespace FinalProject
 
         public ChessGrid()
         {
-            this.map = new Tile[this.Height, this.Width];
-            //CreateBoard();
-            //RenderBoard();
+            map = new Tile[Height, Width];
         }
 
         public void CreateBoard()
@@ -27,7 +26,7 @@ namespace FinalProject
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    this.map[i, j] = new ChessTile(i, j);
+                    map[i, j] = new ChessTile(i, j);
                 }
             }
         }
@@ -39,7 +38,7 @@ namespace FinalProject
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    var Piece = this.map[i, j].TileObject;
+                    var Piece = map[i, j].TileObject;
                     if (Piece is not null)
                     {
                         Console.Write($"[{Piece.Icon}]");
@@ -59,7 +58,7 @@ namespace FinalProject
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    var Piece = this.map[i, j].TileObject;
+                    var Piece = map[i, j].TileObject;
                     if (Piece is not null)
                     {
                         Console.Write($"[{Piece.Icon}]");
@@ -79,7 +78,7 @@ namespace FinalProject
         public ChessTile(int y, int x)
         {
 
-            this.Position = new Position(x, y);
+            Position = new Position(x, y);
         }
     }
 }

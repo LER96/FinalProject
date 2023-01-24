@@ -4,8 +4,9 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using FinalProject.Interface;
 
-namespace FinalProject
+namespace FinalProject.Abstract
 {
     public abstract class Tile
     {
@@ -13,7 +14,7 @@ namespace FinalProject
         public virtual object Color { get; set; }
         public virtual TileObject? TileObject { get; set; }
 
-        
+
     }
 
 }

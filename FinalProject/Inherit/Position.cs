@@ -1,4 +1,6 @@
-﻿namespace FinalProject
+﻿using FinalProject.Interface;
+
+namespace FinalProject.Inherit
 {
     readonly struct Position : IPosition, IEquatable<Position>
     {

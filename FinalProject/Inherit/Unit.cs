@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FinalProject.Abstract;
 
-namespace FinalProject
+namespace FinalProject.Inherit
 {
     internal class Unit : TileObject
     {
@@ -12,6 +13,6 @@ namespace FinalProject
         {
 
         }
-        
+
     }
 }

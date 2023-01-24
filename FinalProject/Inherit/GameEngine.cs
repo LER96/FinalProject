@@ -4,10 +4,11 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using FinalProject.Abstract;
 
-namespace FinalProject
+namespace FinalProject.Inherit
 {
-    class GameEngine: BaseEngine
+    class GameEngine : BaseEngine
     {
         public override Grid Grid { get => base.Grid; set => base.Grid = value; }
         public override Player[] Players { get => base.Players; set => base.Players = value; }

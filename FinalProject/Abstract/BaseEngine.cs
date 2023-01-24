@@ -1,33 +1,21 @@
-﻿using System;
+﻿using FinalProject.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalProject
+namespace FinalProject.Abstract
 {
-    abstract class BaseEngine: IRenderer
+    abstract class BaseEngine : IRenderer
     {
-        public virtual Player[] Players { get; set; }= new Player[2];
+        public virtual Player[] Players { get; set; } = new Player[2];
         public virtual Grid Grid { get; set; }
 
-        public virtual void CreatePlayers()
-        {
-
-        }
-        public virtual void CreateBoard()
-        {
-
-        }
-        public virtual void CreateUnits()
-        {
-
-        }
-
-        public virtual void RenderBoard()
-        {
-
-        }
+        public virtual void CreatePlayers() { }
+        public virtual void CreateBoard() { }
+        public virtual void CreateUnits() { }
+        public virtual void RenderBoard() { }
         public virtual void Update()
         {
             RenderBoard();

@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FinalProject.Interface;
 
-namespace FinalProject
+namespace FinalProject.Abstract
 {
     public abstract class Grid : IEnumerable<Tile>
     {
@@ -90,7 +91,7 @@ namespace FinalProject
                 if (_direction == 0 || _direction == 2) _steps++;
             }
 
-            return (_x >= 0 && _x < _width);
+            return _x >= 0 && _x < _width;
         }
 
         public void Reset() { }

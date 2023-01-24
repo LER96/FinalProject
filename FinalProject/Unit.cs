@@ -10,14 +10,17 @@ namespace FinalProject
 {
     public abstract class Unit : IMove, ICloneable<Unit>
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public IPosition CurrentPos { get; set; }
         public Player Owner { get; set; }
         public string Name { get; set; }
         public char Icon { get; set; }
         public Tile Tile { get; set; }
 
-        public delegate void Move(int x, int y);
+        public virtual IPosition Move(int x, int y)
+        {
+            Position pos = new Position(x, y); 
+            return pos;
+        }
         public abstract void OnTileEnter(Tile tile);
         public abstract void OnTileExit(Tile tile);
 
@@ -35,7 +38,7 @@ namespace FinalProject
 
     public interface IMove
     {
-        public delegate void Move(int x, int y);
+        public IPosition Move(int x, int y);
     }
     public enum MoveDirect { Positive, Negative, Both };
     public interface ICloneable<T>

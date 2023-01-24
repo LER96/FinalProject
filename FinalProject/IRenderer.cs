@@ -8,6 +8,7 @@ namespace FinalProject
 {
     internal interface IRenderer
     {
+        public void CreatePlayers();
         public void CreateBoard();
         public void RenderBoard();
         public void Update();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace FinalProject
 {
     
-    public class ChessGrid : Grid, IRenderer
+    public class ChessGrid : Grid
     {
         public override Tile[,] map { get; set; }
         public override int Width { get; set; } = 8;

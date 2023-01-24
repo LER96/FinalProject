@@ -8,10 +8,10 @@ namespace FinalProject
 {
     public class Player
     {
-        int ID { get; set; }
-        string Name { get; set; }
-
-        Unit[] Units { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int NumberUnits { get; set; }
+        public List<TileObject> Units { get; set; }
 
         public Player(int iD, string name)
         {
@@ -22,7 +22,7 @@ namespace FinalProject
         {
             this.ID=id;
             this.Name = name;
-            Units= new NewUnit[units];
+            this.NumberUnits= units;
         }
     }
 }

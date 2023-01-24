@@ -19,14 +19,20 @@ namespace FinalProject
         {
 
         }
+        public virtual void CreateUnits()
+        {
+
+        }
+
         public virtual void RenderBoard()
         {
 
         }
         public virtual void Update()
         {
-
+            RenderBoard();
         }
+
         public virtual dynamic GetValue<T>(string command)
         {
             if (typeof(T) == typeof(int))

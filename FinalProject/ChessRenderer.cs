@@ -16,7 +16,9 @@ namespace FinalProject
 
         public ChessGrid()
         {
-            this.map = new Tile[Height, Width];
+            this.map = new Tile[this.Height, this.Width];
+            //CreateBoard();
+            //RenderBoard();
         }
 
         public void CreateBoard()
@@ -32,11 +34,12 @@ namespace FinalProject
 
         public void RenderBoard()
         {
+            Console.Clear();
             for (int i = 0; i < Height; i++)
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    var Piece = this.map[i, j].Unit;
+                    var Piece = this.map[i, j].TileObject;
                     if (Piece is not null)
                     {
                         Console.Write($"[{Piece.Icon}]");
@@ -56,7 +59,7 @@ namespace FinalProject
             {
                 for (int j = 0; j < Width; j++)
                 {
-                    var Piece = this.map[i, j].Unit;
+                    var Piece = this.map[i, j].TileObject;
                     if (Piece is not null)
                     {
                         Console.Write($"[{Piece.Icon}]");
@@ -75,18 +78,8 @@ namespace FinalProject
     {
         public ChessTile(int y, int x)
         {
-            X = x;
-            Y = y;
-        }
-        
-        public override void OnTileObjectEnter(Unit tileObject)
-        {
-            throw new NotImplementedException();
-        }
 
-        public override void OnTileObjectExit(Unit tileObject)
-        {
-            throw new NotImplementedException();
+            this.Position = new Position(x, y);
         }
     }
 }

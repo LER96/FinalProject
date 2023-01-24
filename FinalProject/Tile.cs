@@ -9,14 +9,11 @@ namespace FinalProject
 {
     public abstract class Tile
     {
-        
-        
-        public int X { get; set; }
-        public int Y { get; set; }
-        public Unit Unit { get; set; }
+        public virtual IPosition Position { get; set; }
+        public virtual object Color { get; set; }
+        public virtual TileObject? TileObject { get; set; }
 
-        public abstract void OnTileObjectEnter(Unit tileObject);
-        public abstract void OnTileObjectExit(Unit tileObject);
+        
     }
 
 }

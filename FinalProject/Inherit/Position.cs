@@ -1,4 +1,5 @@
 ﻿using FinalProject.Interface;
+using System.Runtime.CompilerServices;
 
 namespace FinalProject.Inherit
 {
@@ -38,7 +39,6 @@ namespace FinalProject.Inherit
         {
             return new Position(a.X + b.X, a.Y + b.Y);
         }
-
         public static Position operator -(Position a, Position b)
         {
             return new Position(a.X - b.X, a.Y - b.Y);

@@ -16,5 +16,6 @@ namespace FinalProject
         public int UpRight { get; set; }
         public int DownLeft { get; set; }
         public int DownRight { get; set; }
+
     }
 }

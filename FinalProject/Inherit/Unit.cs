@@ -9,10 +9,18 @@ namespace FinalProject.Inherit
 {
     internal class Unit : TileObject
     {
-        public Unit()
+        public override Player Owner { get; set; }
+        public override string Name { get; set; }
+        public override char Icon { get; set; }
+        public override Tile Tile { get; set; }
+        public Unit(Player p, string n, char i, Tile t)
         {
-
+            this.Owner= p;
+            this.Name= n;
+            this.Icon= i;
+            this.Tile= t;
         }
+
 
     }
 }

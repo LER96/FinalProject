@@ -18,6 +18,7 @@ namespace FinalProject.Inherit
         public ChessGrid()
         {
             map = new Tile[Height, Width];
+            CreateBoard();
         }
 
         public void CreateBoard()
@@ -77,7 +78,6 @@ namespace FinalProject.Inherit
     {
         public ChessTile(int y, int x)
         {
-
             Position = new Position(x, y);
         }
     }

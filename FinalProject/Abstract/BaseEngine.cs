@@ -9,18 +9,18 @@ namespace FinalProject.Abstract
 {
     abstract class BaseEngine : IRenderer
     {
-        public virtual Player[] Players { get; set; } = new Player[2];
+        public virtual List<Player> Players { get; set; }
         public virtual Grid Grid { get; set; }
-
         public virtual void CreatePlayers() { }
         public virtual void CreateBoard() { }
         public virtual void CreateUnits() { }
+        public virtual void Battle() { }
         public virtual void RenderBoard() { }
         public virtual void Update()
         {
+            Battle();
             RenderBoard();
         }
-
         public virtual dynamic GetValue<T>(string command)
         {
             if (typeof(T) == typeof(int))

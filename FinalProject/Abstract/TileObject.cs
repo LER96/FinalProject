@@ -54,6 +54,4 @@ namespace FinalProject.Abstract
         T Clone(Tile tile);
     }
 
-
-
 }

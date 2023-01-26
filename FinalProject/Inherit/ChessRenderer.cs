@@ -7,7 +7,6 @@ using FinalProject.Abstract;
 
 namespace FinalProject.Inherit
 {
-
     public class ChessGrid : Grid
     {
         public override Tile[,] map { get; set; }
@@ -32,53 +31,25 @@ namespace FinalProject.Inherit
             }
         }
 
-        public void RenderBoard()
-        {
-            Console.Clear();
-            for (int i = 0; i < Height; i++)
-            {
-                for (int j = 0; j < Width; j++)
-                {
-                    var Piece = map[i, j].TileObject;
-                    if (Piece is not null)
-                    {
-                        Console.Write($"[{Piece.Icon}]");
-                    }
-                    else
-                    {
-                        Console.Write("[ ]");
-                    }
-                }
-                Console.WriteLine();
-            }
-        }
-
-        public void Update()
-        {
-            for (int i = 0; i < Height; i++)
-            {
-                for (int j = 0; j < Width; j++)
-                {
-                    var Piece = map[i, j].TileObject;
-                    if (Piece is not null)
-                    {
-                        Console.Write($"[{Piece.Icon}]");
-                    }
-                    else
-                    {
-                        Console.Write("[ ]");
-                    }
-                }
-                Console.WriteLine();
-            }
-        }
-    }
-
-    public class ChessTile : Tile
-    {
-        public ChessTile(int y, int x)
-        {
-            Position = new Position(x, y);
-        }
+        //public void RenderBoard()
+        //{
+        //    Console.Clear();
+        //    for (int i = 0; i < Height; i++)
+        //    {
+        //        for (int j = 0; j < Width; j++)
+        //        {
+        //            var Piece = map[i, j].TileObject;
+        //            if (Piece is not null)
+        //            {
+        //                Console.Write($"[{Piece.Icon}]");
+        //            }
+        //            else
+        //            {
+        //                Console.Write("[ ]");
+        //            }
+        //        }
+        //        Console.WriteLine();
+        //    }
+        //}
     }
 }

@@ -12,15 +12,15 @@ namespace FinalProject.Abstract
 {
     public abstract class TileObject : IMove, ICloneable<TileObject>
     {
-        //public IPosition CurrentPos { get; set; }
+        public virtual Position CurrentPos { get; set; }
         public virtual Player Owner { get; set; }
         public virtual string Name { get; set; }
         public virtual char Icon { get; set; }
         public virtual Tile Tile { get; set; }
         //public List<MoveSet> MoveSets { get; set; }
         //public virtual void AddMoveSet(MoveSet moveset) { }
-        public virtual List<IPosition> CanPositions { get; set; }
-        public virtual void  AddMove(IPosition a) 
+        public virtual List<Position> CanPositions { get; set; }
+        public virtual void  AddMove(Position a) 
         {
             CanPositions.Add(a);
         }
@@ -41,8 +41,8 @@ namespace FinalProject.Abstract
     {
         //public List<MoveSet> MoveSets { get; set; }
         //public void AddMoveSet(MoveSet moveset);
-        public List<IPosition> CanPositions { get; set; }
-        public void AddMove(IPosition a);
+        public List<Position> CanPositions { get; set; }
+        public void AddMove(Position a);
     }
     //public enum MoveDirect { Positive, Negative, Both };
     public interface ICloneable<T>

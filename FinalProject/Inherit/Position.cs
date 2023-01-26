@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace FinalProject.Inherit
 {
-    readonly struct Position : IPosition, IEquatable<Position>
+    public readonly struct Position : IPosition, IEquatable<Position>
     {
         public int X { get; }
         public int Y { get; }

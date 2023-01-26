@@ -16,7 +16,7 @@ namespace FinalProject.Inherit
 
         public ChessGrid()
         {
-            map = new Tile[Height, Width];
+            this.map = new Tile[Height, Width];
             CreateBoard();
         }
 

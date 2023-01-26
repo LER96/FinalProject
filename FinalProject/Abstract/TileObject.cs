@@ -22,17 +22,21 @@ namespace FinalProject.Abstract
         public virtual List<Position> CanPositions { get; set; }
         public virtual void  AddMove(Position a) 
         {
-            CanPositions.Add(a);
+            CanPositions.Add(PossibleMove(a));
+        }
+        protected virtual Position PossibleMove(Position a)
+        {
+            return a + CurrentPos;
         }
 
-        public virtual TileObject Clone()
+        public virtual TileObject Clone(Tile tile)
         {
             var u = (TileObject)MemberwiseClone();
             u.Owner = Owner;
             u.Name = Name;
             u.Icon = Icon;
-
             u.Owner = Owner;
+            u.Tile = tile;
             return u;
         }
     }
@@ -47,7 +51,7 @@ namespace FinalProject.Abstract
     //public enum MoveDirect { Positive, Negative, Both };
     public interface ICloneable<T>
     {
-        T Clone();
+        T Clone(Tile tile);
     }
 
 

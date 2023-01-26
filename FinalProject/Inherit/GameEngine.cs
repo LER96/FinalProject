@@ -38,8 +38,8 @@ namespace FinalProject.Inherit
             };
             Players[1].Units = new List<TileObject>()
             {
-                new Unit(Players[0],"king",'k',Grid[new Position(5,5)]),
-                new Unit(Players[0],"queen",'q',Grid[new Position(4,3)]),
+                new Unit(Players[1],"king",'k',Grid[new Position(5,5)]),
+                new Unit(Players[1],"queen",'q',Grid[new Position(4,3)]),
             };
         }
         public override void CreateBoard()
@@ -49,7 +49,23 @@ namespace FinalProject.Inherit
 
         public override void RenderBoard()
         {
-            
+            Console.Clear();
+            for (int i = 0; i < Grid.Height; i++)
+            {
+                for (int j = 0; j < Grid.Width; j++)
+                {
+                    var Piece = Grid.map[i,j].TileObject;
+                    if (Piece is not null)
+                    {
+                        Console.Write($"[{Piece.Icon}]");
+                    }
+                    else
+                    {
+                        Console.Write("[ ]");
+                    }
+                }
+                Console.WriteLine();
+            }
 
         }
 

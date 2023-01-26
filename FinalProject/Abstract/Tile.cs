@@ -15,7 +15,6 @@ namespace FinalProject.Abstract
         public virtual object Color { get; set; }
         public virtual TileObject? TileObject { get; set; }
 
-
     }
 
 }

@@ -21,13 +21,18 @@ namespace FinalProject.Inherit
             this.Name= n;
             this.Icon= i;
             this.Tile= t;
-            CurrentPos = t.Pos;
+            t.TileObject = this;
+            this.CurrentPos = t.Pos;
         }
         public override void AddMove(Position a)
         {
-            CanPositions.Add(a);
-        }
 
+            CanPositions.Add(PossibleMove(a));
+        }
+        protected override Position PossibleMove(Position a)
+        {
+            return a + CurrentPos;
+        }
 
     }
 }

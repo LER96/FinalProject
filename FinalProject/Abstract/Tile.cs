@@ -12,6 +12,7 @@ namespace FinalProject.Abstract
     public abstract class Tile
     {
         public virtual Position Pos { get; set; }
+        public virtual string Icon { get; set; }
         public virtual object Color { get; set; }
         public virtual TileObject? TileObject { get; set; }
 

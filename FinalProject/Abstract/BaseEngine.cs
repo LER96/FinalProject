@@ -15,11 +15,13 @@ namespace FinalProject.Abstract
         public virtual void CreateBoard() { }
         public virtual void CreateUnits() { }
         public virtual void Battle() { }
+        protected virtual void RenderPos() { }
         public virtual void RenderBoard() { }
         public virtual void Update()
         {
             Battle();
             RenderBoard();
+            RenderPos();
         }
         public virtual dynamic GetValue<T>(string command)
         {

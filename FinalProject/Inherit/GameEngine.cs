@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -19,7 +20,6 @@ namespace FinalProject.Inherit
             CreateBoard();
             CreateUnits();
             RenderBoard();
-
         }
         public override void CreatePlayers()
         {
@@ -54,9 +54,11 @@ namespace FinalProject.Inherit
             {
                 for (int j = 0; j < Grid.Width; j++)
                 {
+                    Grid.map[i, j].Icon = "[ ]";
                     var Piece = Grid.map[i,j].TileObject;
                     if (Piece is not null)
                     {
+               
                         Console.Write($"[{Piece.Icon}]");
                     }
                     else
@@ -67,6 +69,20 @@ namespace FinalProject.Inherit
                 Console.WriteLine();
             }
 
+        }
+        public virtual void Battle() 
+        {
+
+        }
+        protected virtual void RenderPos(Unit unit) 
+        {
+            foreach(var item in unit.CanPositions)
+            {
+                if((item.X<Grid.Width && item.X < Grid.Width) && (item.Y<Grid.Height && item.Y > 0))
+                {
+                    Grid[item].Color = Color.Red;
+                }
+            }
         }
 
         //public override dynamic GetValue<T>(string command)
